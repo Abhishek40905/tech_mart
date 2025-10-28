@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 29% 3%;
+    --foreground: 189 100% 95%;
+
+    --card: 240 29% 5%;
+    --card-foreground: 189 100% 95%;
+
+    --popover: 240 29% 4%;
+    --popover-foreground: 189 100% 95%;
+
+    --primary: 189 100% 50%;
+    --primary-foreground: 240 29% 3%;
+
+    --secondary: 312 100% 50%;
+    --secondary-foreground: 240 29% 3%;
+
+    --muted: 240 20% 15%;
+    --muted-foreground: 189 30% 70%;
+
+    --accent: 51 100% 50%;
+    --accent-foreground: 240 29% 3%;
+
+    --highlight: 156 100% 51%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 189 50% 20%;
+    --input: 240 29% 10%;
+    --ring: 189 100% 50%;
+
+    --radius: 0.75rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(189 100% 50%) 0%, hsl(312 100% 50%) 50%, hsl(51 100% 50%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsla(189 100% 50% / 0.15) 0%, transparent 70%);
+    --gradient-mesh: linear-gradient(45deg, hsla(189 100% 50% / 0.1) 0%, hsla(312 100% 50% / 0.1) 50%, hsla(51 100% 50% / 0.1) 100%);
+    
+    --glow-cyan: 0 0 30px hsla(189 100% 50% / 0.5);
+    --glow-magenta: 0 0 30px hsla(312 100% 50% / 0.5);
+    --glow-gold: 0 0 30px hsla(51 100% 50% / 0.5);
+    
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 240 29% 4%;
+    --sidebar-foreground: 189 100% 95%;
+    --sidebar-primary: 189 100% 50%;
+    --sidebar-primary-foreground: 240 29% 3%;
+    --sidebar-accent: 240 20% 10%;
+    --sidebar-accent-foreground: 189 100% 95%;
+    --sidebar-border: 189 50% 15%;
+    --sidebar-ring: 189 100% 50%;
+  }
+
+  .dark {
+    --background: 240 29% 3%;
+    --foreground: 189 100% 95%;
+    --card: 240 29% 5%;
+    --card-foreground: 189 100% 95%;
+    --popover: 240 29% 4%;
+    --popover-foreground: 189 100% 95%;
+    --primary: 189 100% 50%;
+    --primary-foreground: 240 29% 3%;
+    --secondary: 312 100% 50%;
+    --secondary-foreground: 240 29% 3%;
+    --muted: 240 20% 15%;
+    --muted-foreground: 189 30% 70%;
+    --accent: 51 100% 50%;
+    --accent-foreground: 240 29% 3%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 189 50% 20%;
+    --input: 240 29% 10%;
+    --ring: 189 100% 50%;
+    --sidebar-background: 240 29% 4%;
+    --sidebar-foreground: 189 100% 95%;
+    --sidebar-primary: 189 100% 50%;
+    --sidebar-primary-foreground: 240 29% 3%;
+    --sidebar-accent: 240 20% 10%;
+    --sidebar-accent-foreground: 189 100% 95%;
+    --sidebar-border: 189 50% 15%;
+    --sidebar-ring: 189 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+  }
+
+  .font-display {
+    font-family: 'Audiowide', sans-serif;
+  }
+
+  .cursor-trail {
+    pointer-events: none;
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, hsla(189 100% 50% / 0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    mix-blend-mode: screen;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsla(189 100% 50% / 0.5), 0 0 40px hsla(189 100% 50% / 0.3);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 20px hsla(189 100% 50% / 0.3), inset 0 0 20px hsla(189 100% 50% / 0.1);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsla(189 100% 50% / 0.3); }
+    50% { box-shadow: 0 0 40px hsla(189 100% 50% / 0.6); }
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background-size: 200% 100%;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .parallax-layer {
+    will-change: transform;
+  }
+}
