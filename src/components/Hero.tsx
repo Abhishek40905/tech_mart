@@ -21,7 +21,7 @@ const AnimatedSphere = () => {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden text-center px-4 sm:px-6 lg:px-8">
       {/* 3D Background */}
       <div className="absolute inset-0 opacity-40">
         <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
@@ -38,41 +38,42 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-glow animate-pulse-glow" />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center justify-center space-y-6 sm:space-y-8 lg:space-y-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+          className="w-full"
         >
           <motion.div
-            className="inline-block mb-6"
+            className="inline-block mb-4 sm:mb-6"
             animate={{ rotate: [0, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           >
-            <Sparkles className="w-16 h-16 text-primary" />
+            <Sparkles className="w-12 h-12 sm:w-16 sm:h-16 text-primary" />
           </motion.div>
 
-          <h1 className="font-audiowide text-6xl md:text-8xl lg:text-9xl mb-6 glow-text">
-            <span className="gradient-text">TechMart</span>
-            <span className="text-accent ml-4">2025</span>
+          <h1 className="font-audiowide text-4xl sm:text-6xl md:text-8xl lg:text-9xl mb-4 sm:mb-6 glow-text leading-tight">
+            <span className="gradient-text block sm:inline">TechMart</span>{' '}
+            <span className="text-accent block sm:inline ml-0 sm:ml-4">2025</span>
           </h1>
 
           <motion.p
-            className="text-xl md:text-3xl mb-4 text-muted-foreground font-light"
+            className="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 text-muted-foreground font-light px-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
+            transition={{ delay: 0.4, duration: 1 }}
           >
             Where Innovation Meets Celebration
           </motion.p>
 
           <motion.p
-            className="text-base md:text-xl mb-12 max-w-3xl mx-auto text-foreground/80"
+            className="text-sm sm:text-base md:text-lg mb-10 sm:mb-12 max-w-3xl mx-auto text-foreground/80 px-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
           >
-            Experience technology, creativity, and culture converge in an immersive multidimensional celebration
+            Experience technology, creativity, and culture converge in an immersive multidimensional celebration.
           </motion.p>
 
           <motion.div
@@ -81,17 +82,17 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
           >
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-cyan px-8 py-6 text-lg font-orbitron"
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-cyan px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-orbitron w-full sm:w-auto"
             >
               <Rocket className="mr-2" />
               Register Now
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="outline"
-              className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground shadow-glow-magenta px-8 py-6 text-lg font-orbitron"
+              className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground shadow-glow-magenta px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-orbitron w-full sm:w-auto"
             >
               Explore the Universe
             </Button>
@@ -103,7 +104,7 @@ const Hero = () => {
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 rounded-full bg-primary/30"
+              className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary/30"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -124,13 +125,13 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
+        <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-primary rounded-full flex justify-center">
           <motion.div
-            className="w-1.5 h-1.5 bg-primary rounded-full mt-2"
+            className="w-1 h-1 bg-primary rounded-full mt-1 sm:mt-2"
             animate={{ y: [0, 16, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
