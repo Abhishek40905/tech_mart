@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useRef, useState } from "react";
 
 const About = () => {
