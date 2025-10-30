@@ -350,6 +350,7 @@ export default function PartnerInstitutions() {
       style={{
         background: 'radial-gradient(ellipse at center, rgba(5, 5, 20, 0.95), rgba(0, 0, 5, 1))',
       }}
+      id='institutions'
     >
       <div className="cosmic-bg" />
       <div className="grid-overlay" />

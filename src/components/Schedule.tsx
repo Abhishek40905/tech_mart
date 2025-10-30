@@ -23,7 +23,7 @@ const Schedule = () => {
   ];
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden">
+    <section ref={ref} className="relative py-32 overflow-hidden" id='schedule'>
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
       
       <div className="relative container mx-auto px-6">

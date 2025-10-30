@@ -111,7 +111,7 @@ const Events: React.FC = () => {
   const closeEvent = () => setSelectedIndex(null);
 
   return (
-    <section ref={ref as any} className="relative py-20 sm:py-28 overflow-hidden">
+    <section ref={ref as any} className="relative py-20 sm:py-28 overflow-hidden" id="competitions">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/6 to-transparent pointer-events-none" />
 
       <div className="relative container mx-auto px-4 sm:px-6">

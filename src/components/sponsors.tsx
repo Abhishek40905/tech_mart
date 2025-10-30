@@ -146,6 +146,7 @@ export default function Sponsors() {
       style={{
         background: 'linear-gradient(180deg, rgba(0, 0, 5, 1) 0%, rgba(5, 5, 20, 0.95) 50%, rgba(0, 0, 5, 1) 100%)',
       }}
+      id='sponsors'
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute w-96 h-96 rounded-full" style={{

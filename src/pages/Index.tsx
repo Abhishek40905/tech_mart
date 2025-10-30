@@ -38,7 +38,7 @@ const Index = () => {
       <Sponsors/>
       <Events />
       <Schedule />
-      <About />
+      {/* <About /> */}
       <Contact />
       
       {/* Footer */}
