@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import About from "./components/About";
+import Events from "./components/Events";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element ={<About/>}/>
           <Route path="*" element={<NotFound />} />
+          {/* <Route path="/team" element = {<} */}
+          <Route path="/events" element = {<Events/>}/>
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

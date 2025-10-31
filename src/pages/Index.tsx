@@ -8,6 +8,7 @@ import Contact from '@/components/Contact';
 import CustomCursor from '@/components/CustomCursor';
 import PartnerInstitutions from '@/components/logos';
 import Sponsors from '@/components/sponsors';
+import Leadership from '@/components/Leadership';
 
 const Index = () => {
   useEffect(() => {
@@ -35,8 +36,9 @@ const Index = () => {
       <CustomCursor />
       <Hero />
       <PartnerInstitutions/>
+      <Leadership/>
       <Sponsors/>
-      <Events />
+      {/* <Events /> */}
       <Schedule />
       {/* <About /> */}
       <Contact />

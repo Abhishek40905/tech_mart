@@ -27,7 +27,7 @@ const Hero = () => {
   const menuItems = [
     { name: 'Institutions', id: '#institutions' },
     { name: 'Sponsors', id: '#sponsors' },
-    { name: 'Competitions', id: '#competitions' },
+    { name: 'Competitions', id: '/events' },
     { name: 'Schedule', id: '#schedule' },
     { name: 'About', id: '/about' },
   ];
@@ -55,7 +55,7 @@ const Hero = () => {
       {/* Navbar */}
       <div className="absolute top-4 left-0 right-0 flex justify-between items-center px-6 z-20">
         <h2 className="font-audiowide text-2xl sm:text-3xl text-primary drop-shadow-lg cursor-pointer">
-          <a href="#hero">TechMart</a>
+          <a href="/">TechMart</a>
         </h2>
 
         {/* Hamburger for Mobile */}
@@ -151,20 +151,23 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
           >
-            <Button
+            <a href="/events"><Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-cyan px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-orbitron w-full sm:w-auto"
             >
               <Rocket className="mr-2" />
               Register Now
-            </Button>
-            <Button
+            </Button></a>
+            <a href="/events">
+              <Button
+              
               size="lg"
               variant="outline"
               className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground shadow-glow-magenta px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-orbitron w-full sm:w-auto"
             >
               Explore the Universe
             </Button>
+            </a>
           </motion.div>
         </motion.div>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { Code, Zap, ShieldCheck, BookOpen, Activity, X, Sparkles } from "lucide-react";
+import { Menu, X, Code, Zap, ShieldCheck, BookOpen, Activity, Sparkles } from "lucide-react";
 
 interface Event {
   title: string;
@@ -102,6 +102,7 @@ const Events: React.FC = () => {
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-120px" });
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = selectedIndex !== null ? "hidden" : "";
@@ -110,11 +111,74 @@ const Events: React.FC = () => {
   const openEvent = (index: number) => setSelectedIndex(index);
   const closeEvent = () => setSelectedIndex(null);
 
+  const menuItems = [
+    { name: "Institutions", id: "/#institutions" },
+    { name: "Sponsors", id: "/#sponsors" },
+    { name: "Competitions", id: "/#competitions" },
+    { name: "Schedule", id: "/#schedule" },
+    { name: "About", id: "/about" },
+  ];
+
   return (
     <section ref={ref as any} className="relative py-20 sm:py-28 overflow-hidden" id="competitions">
+      {/* 🌈 Navbar */}
+      <div className="absolute top-4 left-0 right-0 flex justify-between items-center px-6 z-30">
+        <h2 className="font-audiowide text-2xl sm:text-3xl text-primary drop-shadow-lg cursor-pointer">
+          <a href="/">TechMart</a>
+        </h2>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden p-2 rounded-lg bg-background/40 backdrop-blur-md border border-primary/20 hover:bg-background/60 transition"
+        >
+          {menuOpen ? <X className="w-6 h-6 text-primary" /> : <Menu className="w-6 h-6 text-primary" />}
+        </button>
+
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex gap-8 text-lg font-orbitron text-foreground/90">
+          {menuItems.map((item) => (
+            <a
+              key={item.id}
+              href={`${item.id}`}
+              className="hover:text-primary transition-colors"
+            >
+              {item.name}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-16 left-4 right-4 z-20 bg-background/80 backdrop-blur-lg border border-primary/20 rounded-2xl p-6 shadow-lg md:hidden"
+          >
+            <ul className="flex flex-col items-center gap-4 text-lg font-orbitron text-foreground">
+              {menuItems.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={item.id}
+                    className="hover:text-primary transition-colors"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/6 to-transparent pointer-events-none" />
 
-      <div className="relative container mx-auto px-4 sm:px-6">
+      <div className="relative container mx-auto px-4 sm:px-6 mt-20">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -149,13 +213,10 @@ const Events: React.FC = () => {
                   onClick={() => openEvent(idx)}
                   className={`group relative flex flex-col justify-between w-full h-full text-left rounded-2xl p-6 bg-gradient-to-b from-gray-900/60 to-gray-900/40 border border-gray-800 hover:border-cyan-500 transition-all duration-300 ${event.glow}`}
                 >
-                  {/* Gradient Overlay */}
                   <div
                     className={`absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity ${event.color}`}
                     style={{ mixBlendMode: "screen" }}
                   />
-
-                  {/* Card Content */}
                   <div className="relative z-10 flex flex-col gap-3">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-gradient-to-br from-white/5 to-white/3 ring-1 ring-white/5">
                       <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-cyan-300" />
@@ -163,8 +224,6 @@ const Events: React.FC = () => {
                     <h3 className="text-lg sm:text-xl font-semibold text-white">{event.title}</h3>
                     <p className="text-gray-400 text-sm sm:text-base flex-1">{event.description}</p>
                   </div>
-
-                  {/* Tags / Badges */}
                   <div className="mt-3 flex flex-wrap gap-2">
                     <span className="text-[11px] sm:text-xs px-2 py-1 bg-white/3 rounded-full text-white/90">
                       {event.format}
@@ -192,15 +251,12 @@ const Events: React.FC = () => {
             className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
             onClick={closeEvent}
           >
-            {/* backdrop */}
             <motion.div
               className="absolute inset-0 bg-black/80 backdrop-blur-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
-
-            {/* modal card */}
             <motion.div
               initial={{ y: 30, scale: 0.98, opacity: 0 }}
               animate={{ y: 0, scale: 1, opacity: 1 }}
@@ -209,7 +265,6 @@ const Events: React.FC = () => {
               onClick={(e) => e.stopPropagation()}
               className="relative z-10 w-full max-w-3xl bg-gray-900/95 border border-cyan-500/30 rounded-2xl shadow-2xl p-5 sm:p-8 max-h-[90vh] overflow-y-auto"
             >
-              {/* Close button */}
               <button
                 onClick={closeEvent}
                 className="absolute top-4 right-4 sm:top-5 sm:right-5 w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-gray-800/60 border border-gray-700 hover:bg-gray-800/80 transition"
@@ -217,7 +272,7 @@ const Events: React.FC = () => {
                 <X className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-300" />
               </button>
 
-              {/* Content */}
+              {/* Modal Content */}
               <div className="grid gap-5 sm:gap-6">
                 <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-white/5 to-white/3 flex items-center justify-center border border-white/5 flex-shrink-0">
@@ -267,7 +322,6 @@ const Events: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Footer */}
                 <div className="pt-4 border-t border-white/5 flex flex-col sm:flex-row gap-3 sm:gap-0 items-center justify-between">
                   <div className="flex items-center gap-2 text-sm text-cyan-300">
                     <Sparkles className="w-4 h-4" />
