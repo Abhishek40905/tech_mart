@@ -383,9 +383,10 @@ export default function PartnerInstitutions() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-20">
-          <h2 className="partner-title text-5xl md:text-7xl font-black mb-6">
-            Institutions
-          </h2>
+          <h2 className="partner-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6">
+  Institutions
+</h2>
+
           <div className="h-1 w-32 mx-auto mb-8 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
                style={{ boxShadow: '0 0 20px rgba(0, 230, 255, 0.5)' }} />
           <p className="partner-subtitle text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
